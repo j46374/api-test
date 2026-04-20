@@ -25,7 +25,7 @@ pipeline {
         stage('Run API Tests') {
             steps {
                 // Running Newman against your collection in the repo
-                sh 'newman run collections/genkins-test.postman_collection.json --reporters cli'
+                sh 'newman run collections/genkins-test.postman_collection.json -d collections/genkins-test.postman_collection-variables.json --reporters cli'
             }
         }
     }
