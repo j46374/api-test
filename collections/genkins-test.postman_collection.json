@@ -30,7 +30,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "\n{\n \"password\": \"{{password}}\",\n \"userLoginEmailId\": \"Team03@gmail.com\"\n}\n",
+          "raw": "\n{\n \"password\": \"{{password}}\",\n \"userLoginEmailId\": \"{{username}}\"\n}\n",
           "options": {
             "raw": {
               "language": "json"
@@ -243,6 +243,10 @@
     },
     {
       "key": "password",
+      "value": ""
+    },
+    {
+      "key": "username",
       "value": ""
     }
   ]
