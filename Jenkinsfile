@@ -27,7 +27,7 @@ pipeline {
                 // Running Newman against your collection in the repo
                 withCredentials([usernamePassword(credentialsId: 'API_PASSWORD', 
                                   usernameVariable: 'API_USER', 
-                                  passwordVariable: 'API_PASS')])]) {
+                                  passwordVariable: 'API_PASS')]) {
                      sh "newman run collections/genkins-test.postman_collection.json --env-var password=${API_PASS} --env-var username=${API_USER} -d collections/genkins-test.postman_collection-variables.json --reporters cli,htmlextra --reporter-htmlextra-export reports/report.html"
                  }
             }
