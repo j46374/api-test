@@ -25,13 +25,16 @@ pipeline {
         stage('Run API Tests') {
             steps {
                 // Running Newman against your collection in the repo
-                sh 'newman run collections/genkins-test.postman_collection.json -d collections/genkins-test.postman_collection-variables.json --reporters cli'
+                withCredentials([string(credentialsId: 'API_PASSWORD', variable: 'API_PASSWORD')]) {
+                     sh "newman run collections/genkins-test.postman_collection.json --env-var password=${API_PASSWORD} -d collections/genkins-test.postman_collection-variables.json --reporters cli,htmlextra --reporter-htmlextra-export reports/report.html"
+                 }
             }
         }
     }
 
     post {
         always {
+            archiveArtifacts artifacts: 'reports/*.html', fingerprint: true
             echo "Pipeline finished."
         }
         failure {
